@@ -46,8 +46,8 @@ function CreateForm(recipes) {
         i++;
     }
     form.append(divs);
-    form.append($("<button></button>").attr("type", "button").attr("id", "submit").text("Submit").addClass('btn btn-primary'));
-    $('#submit').bind('click', (function() {
+    // form.append($("<button></button>").attr("type", "button").attr("id", "submit").text("Submit").addClass('btn btn-primary'));
+    $('input').bind('change', (function() {
     OutputIngredients(recipes);
     }));
 }   
@@ -104,15 +104,16 @@ function OutputIngredients(recipes) {
     </script>
 </head>
 <body class="container">
-    <form id="desired_products"></form>  
-    <hr>
     <div class="row">
+        <div class="col-md-6">
+            <form id="desired_products"></form>  
+        </div>
         <div class="col-md-6">
             <h1>Ingredients Needed</h1>
             <table id="needed_ingredients" class="table col-6"></table>
         </div>
-        
     </div>
+    
     
 </body>
 </html>
