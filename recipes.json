@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "Recipe": "Roasted Green Chile - Mild",
+        "Flame Roasted Green Chile Mild": 10,
+        "Steam Peeled Green Chile Mild": 4
+    },
+    {
+        "id": 2,
+        "Recipe": "Roasted Green Chile - Medium",
+        "Flame Roasted Green Chile Med": 8,
+        "Flame Roasted Green Chile Medium": 8,
+        "Steam Peeled Green Chile Med": 4,
+        "Heavy Roast Green Chile Hot": 2
+    },
+    {
+        "id": 3,
+        "Recipe": "Roasted Green Chile - Hot",
+        "Flame Roasted Green Chile Xtra Hot": 8,
+        "Steam Peeled Green Chile Xtra Hot": 4,
+        "Heavy Roast Green Chile Hot": 2
+    },
+    {
+        "id": 4,
+        "Recipe": "Extra Roasted Green Chile - Med",
+        "Steam Peeled Green Chile Hot": 6,
+        "Heavy Roast Green Chile Hot": 8
+    },
+    {
+        "id": 5,
+        "Recipe": "Late harvest Green Chile - Med",
+        "Flame Roasted Green Chile Medium": 4,
+        "Holiday Blend Green Chile Hot": 8,
+        "Heavy Roast Green Chile Hot": 2
+    },
+    {
+        "id": 6,
+        "Recipe": "Roasted Red Chile - Medium",
+        "Red Chile Hot": 14
+    },
+    {
+        "id": 7,
+        "Recipe": "Hatch Valley Roasted Green Chile - Mild",
+        "Steam Peeled Green Chile Mild": 14
+    },
+    {
+        "id": 8,
+        "Recipe": "Hatch Valley Roasted Green Chile - Medium",
+        "Steam Peeled Green Chile Med": 14
+    },
+    {
+        "id": 9,
+        "Recipe": "Hatch Valley Roasted Green Chile - Hot",
+        "Steam Peeled Green Chile Xtra Hot": 14
+    },
+    {
+        "id": 10,
+        "Recipe": "Red Chile Sauce - Medium",
+        "Red Chile Hot": 7
+    },
+    {
+        "id": 11,
+        "Recipe": "Green Chile Sauce - Medium",
+        "Steam Peeled Green Chile Hot": 7
+    }
+]

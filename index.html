@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.when(
+    $.ajax({
+        url: "./recipes.json",
+        type: "GET",
+        dataType: "json",
+        success: function (fileContents) {
+          recipes = fileContents;
+        },
+        async: false,
+    }),
+)
+.done(function () {
+    // console.log(recipes);
+    CreateForm(recipes);
+}); 
+        })
+
+
+function CreateForm(recipes) {
+    let form = $('#desired_products');
+    var i = 0;
+    let divs = [];
+    for (var key in recipes) {
+        let recipeName = recipes[key]['Recipe']
+        let itemId = "recipe" + i;
+        let div = $("<div></div>")
+            .append($("<label></label>").attr("for", itemId).text(recipeName))
+            .append($("<input></input>").attr("type", "number").attr("name", recipeName).attr("value", 0).attr("id", itemId));
+            form.text("Desired Products");
+        // console.log(div.html())
+        // form.append(div) && console.log('appended');
+        divs.push(div);
+        i++;
+    }
+    form.append(divs);
+    form.append($("<button></button>").attr("type", "button").attr("id", "submit").text("Submit"));
+    $('#submit').bind('click', (function() {
+    OutputIngredients(recipes);
+    }));
+}   
+
+function OutputIngredients(recipes) {
+    formValues = $('#desired_products').serializeArray();
+    // console.log(formValues)
+    ingredients = [];
+    let ingredientsToOrder = [];
+    formValues.forEach(function (item) {
+        if (item.value > 0) {
+        recipe = recipes.find(recipe => recipe.Recipe === item.name);
+        // console.log(recipe);
+        let ingredients = Object.keys(recipe);
+        ingredients.splice('Recipe', 1); // Recipe is not an ingredient
+        ingredients.splice('id', 1); // id is not an ingredient
+        ingredients.forEach(function (ingredient) {
+            let ingredientToOrder = ingredientsToOrder.find(iToO => iToO.Item === ingredient)
+            if (ingredientToOrder === undefined) {
+            ingredientsToOrder.push({ 'Item': ingredient, 'Quantity': recipe[ingredient] * item.value});
+            } else {
+            ingredientToOrder.Quantity += recipe[ingredient] * item.value;
+            }
+        })
+    }})
+        displayResults(ingredientsToOrder);
+    }
+
+    function displayResults(ingredientsToOrder) {
+        let rows = [];
+        ingredientsToOrder.forEach(function(ingredient) {
+            let name = $("<td></td>").text(ingredient.Item);
+            let quantity = $("<td></td>").text(ingredient.Quantity);
+            let temp = $("<tr></tr>").append(name).append(quantity);
+            rows.push(temp);
+        })
+        // console.log(rows);
+        $('#needed_ingredients').html('');
+        $('#needed_ingredients').append(rows);
+        // $('#needed_ingredients').html(JSON.stringify(ingredientsToOrder));
+    }
+
+
+    </script>
+</head>
+<body>
+    <form id="desired_products"></form>  
+    <table id="needed_ingredients"></table>
+</body>
+</html>
