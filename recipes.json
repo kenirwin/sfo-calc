@@ -9,7 +9,6 @@
         "id": 2,
         "Recipe": "Roasted Green Chile - Medium",
         "Flame Roasted Green Chile Med": 8,
-        "Flame Roasted Green Chile Medium": 8,
         "Steam Peeled Green Chile Med": 4,
         "Heavy Roast Green Chile Hot": 2
     },
@@ -29,7 +28,7 @@
     {
         "id": 5,
         "Recipe": "Late harvest Green Chile - Med",
-        "Flame Roasted Green Chile Medium": 4,
+        "Flame Roasted Green Chile Med": 4,
         "Holiday Blend Green Chile Hot": 8,
         "Heavy Roast Green Chile Hot": 2
     },
