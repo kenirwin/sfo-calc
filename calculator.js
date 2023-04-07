@@ -1,5 +1,7 @@
 $(document).ready(function () {
   // LogParams();
+  console.log(window.location);
+  console.log(window.location.pathname);
   $.when(
     $.ajax({
       url: './recipes.json',
