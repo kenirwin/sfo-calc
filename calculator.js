@@ -63,6 +63,9 @@ function CreateForm(recipes) {
       .text('Clear Form')
       .addClass('btn btn-primary')
   );
+  form.after(
+    '<a href="" id="link-to-page" class="btn btn-primary mt-5">Copy link to this page</a>'
+  );
   $('input').bind('change', function () {
     CalculateIngredients(recipes);
   });
