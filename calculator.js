@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // LogParams();
   $.when(
     $.ajax({
       url: './recipes.json',
@@ -12,23 +13,40 @@ $(document).ready(function () {
   ).done(function () {
     // console.log(recipes);
     CreateForm(recipes);
+    CalculateIngredients(recipes);
   });
 });
 
+// function LogParams() {
+//   // get url params
+//   let urlParams = new URLSearchParams(window.location.search);
+//   urlParams.forEach(function (value, key) {
+//     console.log(key, value);
+//   });
+//   if (urlParams.has('recipe0')) {
+//     console.log('test output');
+//   }
+// }
+
 function CreateForm(recipes) {
+  let urlParams = new URLSearchParams(window.location.search);
   let form = $('#desired_products');
   var i = 0;
   let divs = [];
   for (var key in recipes) {
     let recipeName = recipes[key]['Recipe'];
     let itemId = 'recipe' + i;
+    let value = 0;
+    if (urlParams.has(itemId)) {
+      value = urlParams.get(itemId); // get value from url if it exists
+    }
     let div = $('<div></div>')
       .append($('<label></label>').attr('for', itemId).text(recipeName))
       .append(
         $('<input></input>')
           .attr('type', 'number')
           .attr('name', recipeName)
-          .attr('value', 0)
+          .attr('value', value)
           .attr('id', itemId)
       );
     form.html('<h1>Desired Products</h1>');
@@ -93,6 +111,7 @@ function CalculateIngredients(recipes) {
     }
   });
   displayResults(ingredientsToOrder, totalCases);
+  displayLink();
 }
 
 function displayResults(ingredientsToOrder) {
@@ -123,4 +142,17 @@ function displayResults(ingredientsToOrder) {
   );
   $('#needed_ingredients').append(tfooter);
   // $('#needed_ingredients').html(JSON.stringify(ingredientsToOrder));
+}
+
+function displayLink() {
+  let link = $('#link-to-page');
+  let linkableParams = new URLSearchParams();
+  $('#desired_products input[type="number"').each(function () {
+    if ($(this).val() > 0) {
+      // console.log($(this).attr('id'), $(this).val());
+      linkableParams.set($(this).attr('id'), $(this).val());
+      // link.attr('href', '?' + $(this).attr('id') + '=' + $(this).val());
+    }
+  });
+  link.attr('href', '?' + linkableParams.toString());
 }
