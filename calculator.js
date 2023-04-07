@@ -67,6 +67,7 @@ function CreateForm(recipes) {
   $('#clear').click(function () {
     $('input[type="number"]').val(0);
     $('#needed_ingredients').html('');
+    displayLink();
   });
 }
 
