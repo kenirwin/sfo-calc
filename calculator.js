@@ -146,6 +146,7 @@ function displayResults(ingredientsToOrder) {
 }
 
 function displayLink() {
+  console.log('displayLink called');
   let link = $('#link-to-page');
   link
     .html('<i class="bi bi-files"></i> Copy link to this page')
@@ -154,7 +155,7 @@ function displayLink() {
   let linkableParams = new URLSearchParams();
   $('#desired_products input[type="number"').each(function () {
     if ($(this).val() > 0) {
-      // console.log($(this).attr('id'), $(this).val());
+      console.log($(this).attr('id'), $(this).val());
       linkableParams.set($(this).attr('id'), $(this).val());
       // link.attr('href', '?' + $(this).attr('id') + '=' + $(this).val());
     }
