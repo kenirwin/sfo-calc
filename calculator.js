@@ -160,7 +160,13 @@ function displayLink() {
       // link.attr('href', '?' + $(this).attr('id') + '=' + $(this).val());
     }
   });
-  link.attr('href', window.location.origin + '?' + linkableParams.toString());
+  link.attr(
+    'href',
+    window.location.origin +
+      window.location.pathname +
+      '?' +
+      linkableParams.toString()
+  );
   link.on('click', function (e) {
     e.preventDefault();
     // window.location.href = $(this).attr('href');
